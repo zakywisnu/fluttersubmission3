@@ -27,8 +27,8 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   Future _getMealId() async {
-    var mealService = MealService();
-    var response = await mealService.getMealId(widget.idMeal);
+    var foodService = MealService();
+    var response = await foodService.getMealId(widget.idMeal);
     if (!mounted) return;
     setState(() {
       mealDetail = response;
@@ -83,13 +83,51 @@ class _DetailScreenState extends State<DetailScreen> {
         ),
       );
     } else {
+      
       return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        child: Padding(
-          padding: EdgeInsets.all(15.0),
-          child: Text(mealDetail[0].strInstructions),
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Column(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    padding: EdgeInsets.only(top: 4.0),
+                    child: Text(
+                      'Ingredients: ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    children: ingredientsList(mealDetail[0].strIngredients),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    padding: EdgeInsets.only(top: 4.0),
+                    child: Text(
+                      'Instructions: ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    children: instructionsList(mealDetail[0].strInstructions),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       );
     }

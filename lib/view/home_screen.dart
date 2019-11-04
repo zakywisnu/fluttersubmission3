@@ -12,38 +12,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: MealScreen(
-        key: Key('MEAL_SCREEN'),
+        // key: Key('MEAL_SCREEN'),
       ),
     );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MaterialApp(
-  //     home: DefaultTabController(
-  //       length: 2,
-  //       child: Scaffold(
-  //         appBar: AppBar(
-  //           bottom: TabBar(
-  //             tabs: <Widget>[
-  //               Tab(text: "Dessert",),
-  //               Tab(text: "Seafood",)
-  //             ],
-  //           ),
-  //           title: Text("Makanan"),
-  //         ),
-  //         body: TabBarView(
-  //           children: <Widget>[
-  //             DessertPage(),
-  //             SeafoodPage(),
-  //           ],
-  //         ),
-  //       ),
-  //     )
-  //     ,
-  //   );
-  // }
-
 }
 
 class MealScreen extends StatefulWidget {
@@ -72,24 +44,20 @@ class _MealScreenState extends State<MealScreen> {
         key: Key('APP_BAR'),
         title: Text(
           'Meal Catalogue',
-          key: Key('APP_BAR_TITLE'),
         ),
       ),
       body: _widget.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        key: Key('BOTTOM_NAVBAR_MEAL'),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               FontAwesomeIcons.birthdayCake,
-              key: Key('BOTTOM_NAVBAR_DESSERT'),
             ),
             title: Text('Dessert'),
           ),
           BottomNavigationBarItem(
             icon: Icon(
               FontAwesomeIcons.fish,
-              key: Key('BOTTOM_NAVBAR_SEAFOOD'),
             ),
             title: Text('Seafood'),
           )
